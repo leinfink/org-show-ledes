@@ -10,7 +10,7 @@ If ARG is non-nil, use the first linebreak."
           (last (point)))
       (while (re-search-backward regexp nil 't)
         (goto-char (match-end 0))
-        (if arg (forward-line))
+        (if arg (forward-line) (progn (forward-line -1) (end-of-line)))
         (org-flag-region (point) last t 'outline)
         (goto-char (match-beginning 0))
         (forward-line -1)
